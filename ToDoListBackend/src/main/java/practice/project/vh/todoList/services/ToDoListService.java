@@ -51,12 +51,5 @@ public class ToDoListService {
 
     }
 
-    public ResponseEntity isCompleted(UpdateListData data) {
-        var list = toDoListRepository.getReferenceById(data.id());
-        if(!toDoListRepository.existsById(list.getId())) throw new ListNotFoundException("list by id " + list.getId() + " was not found");
-        list.itIsCompleted(data);
-        return ResponseEntity.ok().build();
 
-
-    }
 }

@@ -41,9 +41,4 @@ public class ToDoListController {
                 return toDoListService.deleteList(id);
         }
 
-        @PutMapping("/completed")
-        @Transactional
-        public ResponseEntity isCompleted(@RequestBody @Valid UpdateListData data) {
-                return toDoListService.isCompleted(data);
-        }
 }
