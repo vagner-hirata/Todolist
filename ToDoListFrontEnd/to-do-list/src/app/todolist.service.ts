@@ -23,7 +23,4 @@ export class ToDoListService {
   public deleteList(todolistId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/delete/${todolistId}`)
   }
-  public isCompleted(todolist: ToDoList): Observable<ToDoList> {
-    return this.http.put<ToDoList>(`${this.apiServerUrl}/completed`, todolist)
-  }
 }
