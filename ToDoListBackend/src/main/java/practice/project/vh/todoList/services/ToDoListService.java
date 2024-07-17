@@ -3,7 +3,6 @@ package practice.project.vh.todoList.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.util.UriBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 import practice.project.vh.todoList.classes.ToDoList;
 import practice.project.vh.todoList.classes.ToDoListRepository;
@@ -31,7 +30,7 @@ public class ToDoListService {
         return ResponseEntity.created(uri).body(new ListDataDetails(toDoList));
     }
     // Get Method using list to show all
-    public ResponseEntity<List<ToDoDataList>> showList(Long id) {
+    public ResponseEntity<List<ToDoDataList>> showList() {
         List<ToDoDataList> list = toDoListRepository.findAll().stream().map(ToDoDataList::new).toList();
         return ResponseEntity.ok(list);
     }

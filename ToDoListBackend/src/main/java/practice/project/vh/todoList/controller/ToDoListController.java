@@ -26,8 +26,8 @@ public class ToDoListController {
         }
 
         @GetMapping("/all")
-        public ResponseEntity<List<ToDoDataList>> showList(Long id) {
-            return toDoListService.showList(id);
+        public ResponseEntity<List<ToDoDataList>> showList() {
+            return toDoListService.showList();
 
         }
         @PutMapping("/update")
