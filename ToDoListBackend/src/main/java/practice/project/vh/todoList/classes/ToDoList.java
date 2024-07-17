@@ -12,10 +12,8 @@ import practice.project.vh.todoList.dto.UpdateListData;
 
 
 
-
-
-@Table(name = "ToDoLists")
-@Entity(name="ToDoList")
+@Table(name = "todolists")
+@Entity(name="todolist")
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor

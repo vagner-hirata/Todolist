@@ -1,8 +1,7 @@
-create table todolist(
+create table todolists(
 
     id bigint not null auto_increment,
     description varchar(250) not null,
-    completed tinyint,
 
 
     primary key(id)
