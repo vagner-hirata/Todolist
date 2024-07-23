@@ -1,11 +1,13 @@
 package practice.project.vh.todoList.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 import practice.project.vh.todoList.classes.ToDoList;
 import practice.project.vh.todoList.classes.ToDoListRepository;
+import practice.project.vh.todoList.classes.TodolistType;
 import practice.project.vh.todoList.dto.ToDoDataList;
 import practice.project.vh.todoList.dto.ListDataDetails;
 import practice.project.vh.todoList.dto.RegisterListData;
@@ -52,11 +54,30 @@ public class ToDoListService {
 
     }
 
+    public List<ToDoDataList> showAllByType(TodolistType todolistType) {
+
+           return toDoListRepository.findByTodolistType(todolistType).stream().map(ToDoDataList::new).toList();
+
+    }
+
+
     private void isNotValidId(Long id) {
-        if(!toDoListRepository.existsById(id)) {
+        if (!toDoListRepository.existsById(id)) {
             throw new ListNotFoundException("List by id" + id + " was not found!");
         }
     }
 
+    public Boolean isValidTodolistType(String todolistType) {
 
+        if (todolistType == null || todolistType.trim().isEmpty()) {
+
+            return false;
+        }
+        for (TodolistType todolist : TodolistType.values()) {
+            if (todolist.name().equalsIgnoreCase(todolistType)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -24,10 +24,13 @@ public class ToDoList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
+    @Enumerated(EnumType.STRING)
+    private TodolistType todolistType;
 
     public ToDoList(RegisterListData data) {
 
         this.description = data.description();
+        this.todolistType = data.todolistType();
 
     }
 
